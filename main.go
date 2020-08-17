@@ -6,15 +6,16 @@ import (
 	"log"
 	"net/http"
 	"time"
+	"os"
 )
 
 import _ "github.com/go-sql-driver/mysql"
 
-var dbhost string = "dbeunorth.mariadb.database.azure.com"
-var dbport string = "3306"
-var dbname string = "test_go"
-var dbuser string = "bgradm@dbeunorth"
-var dbpassword string = "sD8f_3Hkjhu-Uy!R"
+var dbhost string = os.Getenv("DB_HOST")
+var dbport string = os.Getenv("DB_PORT")
+var dbname string = os.Getenv("DB_DATABASE")
+var dbuser string = os.Getenv("DB_USERNAME")
+var dbpassword string = os.Getenv("DB_PASSWORD")
 
 // Configure the database connection (always check errors)
 var db, err = sql.Open("mysql", dbuser + ":" + dbpassword + "@(" + dbhost + ":" + dbport +")/" + dbname + "?parseTime=true")
