@@ -1,0 +1,10 @@
+runtime: go115
+
+env:
+  - name: APP_NAME
+    value: "Appbasky's Go Web Example"
+
+entrypoint:
+  - go get -u -v -f all
+  - go build
+  - ./go-example

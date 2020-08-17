@@ -11,6 +11,7 @@ import (
 
 import _ "github.com/go-sql-driver/mysql"
 
+var appname string = os.Getenv("APP_NAME")
 var dbhost string = os.Getenv("DB_HOST")
 var dbport string = os.Getenv("DB_PORT")
 var dbname string = os.Getenv("DB_DATABASE")
@@ -67,6 +68,7 @@ func main() {
 }
 
 type PageVariables struct {
+	TITLE     string
 	ID        int
 	USERNAME  string
 	PASSWORD  string
@@ -86,6 +88,7 @@ func HomePage(w http.ResponseWriter, r *http.Request){
 	err := db.QueryRow(query, 1).Scan(&id, &username, &password, &createdAt)
 
 	HomePageVars := PageVariables{ //store the date and time in a struct
+		TITLE: appname,
 		ID: id,
 		USERNAME: username,
 		PASSWORD: password,
