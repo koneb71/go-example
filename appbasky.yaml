@@ -6,5 +6,5 @@ env:
 
 entrypoint:
   - go get -u -v -f all
-  - go build
-  - ./go-example
+  - go build -o app
+  - ./app
