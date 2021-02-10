@@ -1,4 +1,5 @@
-runtime: go115
+template: go
+runtime: golang:1.15.0-buster
 
 env:
   - name: APP_NAME
